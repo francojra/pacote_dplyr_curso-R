@@ -34,4 +34,8 @@ imdb %>%
 
 # Ordenando a base -------------------------------------------------------------------------------------------------------------------------
 
+arrange(imdb, orcamento) # Ordem crescente
 
+arrange(imdb, desc(orcamento)) # Ordem decrescente
+
+arrange(imdb, desc(ano), desc(orcamento))
