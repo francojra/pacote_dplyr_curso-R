@@ -26,11 +26,9 @@ select(imdb, ends_with("tor"))
 
 select(imdb, contains("pais"))
 
-imdb %>%
-  select(-ano, -diretor)
+select(imdb, -ano, -diretor)
 
-imdb %>%
-  select(-starts_with("ator"))
+select(imdb, -starts_with("ator"))
 
 # Ordenando a base -------------------------------------------------------------------------------------------------------------------------
 
@@ -39,3 +37,9 @@ arrange(imdb, orcamento) # Ordem crescente
 arrange(imdb, desc(orcamento)) # Ordem decrescente
 
 arrange(imdb, desc(ano), desc(orcamento))
+
+# O código pipe em ação --------------------------------------------------------------------------------------------------------------------
+
+imdb %>% 
+  select(titulo, ano) %>% 
+  arrange(ano)
