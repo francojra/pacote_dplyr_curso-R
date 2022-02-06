@@ -79,3 +79,13 @@ str_detect(
 
 imdb %>% 
   filter(str_detect(generos, "Action"))
+
+# Modificando e criando novas colunas ------------------------------------------------------------------------------------------------------
+
+imdb %>% mutate(duracao = duracao/60)
+
+imdb %>% mutate(duracao_horas = duracao/60)
+
+imdb %>% 
+  mutate(lucro = receita - orcamento, pais = "Estados Unidos") %>% 
+  select(titulo, lucro, pais)
