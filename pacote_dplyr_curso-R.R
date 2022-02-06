@@ -43,3 +43,39 @@ arrange(imdb, desc(ano), desc(orcamento))
 imdb %>% 
   select(titulo, ano) %>% 
   arrange(ano)
+
+# Filtrando linhas -------------------------------------------------------------------------------------------------------------------------
+
+imdb %>% 
+  filter(nota_imdb > 9)
+
+imdb %>% 
+  filter(nota_imdb > 9) %>% 
+  select(titulo, nota_imdb)
+
+imdb %>% 
+  filter(ano > 2010, nota_imdb > 8.5)
+
+imdb %>% 
+  filter(receita - orcamento > 0) %>%
+  View()
+
+imdb %>%
+  filter(ator_1 %in% c('Angelina Jolie Pitt', "Brad Pitt"))
+
+## Para filtrar textos sem correspondência exata, podemos utilizar a função 
+## auxiliar str_detect() do pacote {stringr}. Ela serve para verificar se cada 
+## string de um vetor contém um determinado padrão de texto.
+
+library(stringr)
+
+str_detect(
+  string = c("a", "aa","abc", "bc", "A", NA), 
+  pattern = "a")
+
+str_detect(
+  string = imdb$generos[1:6],
+  pattern = "Action")
+
+imdb %>% 
+  filter(str_detect(generos, "Action"))
