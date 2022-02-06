@@ -82,10 +82,40 @@ imdb %>%
 
 # Modificando e criando novas colunas ------------------------------------------------------------------------------------------------------
 
-imdb %>% mutate(duracao = duracao/60)
+imdb %>% 
+  mutate(duracao = duracao/60)
 
-imdb %>% mutate(duracao_horas = duracao/60)
+imdb %>% 
+  mutate(duracao_horas = duracao/60)
 
 imdb %>% 
   mutate(lucro = receita - orcamento, pais = "Estados Unidos") %>% 
   select(titulo, lucro, pais)
+
+# Summarisando a base ----------------------------------------------------------------------------------------------------------------------
+
+## Sumarização é a técnica de se resumir um conjunto de dados utilizando alguma 
+## métrica de interesse. A média, a mediana, a variância, a frequência, a proporção, 
+## por exemplo, são tipos de sumarização que trazem diferentes informações sobre 
+## uma variável.
+
+imdb %>% 
+  summarize(media_orcamento = mean(orcamento, na.rm = TRUE))
+
+imdb %>% 
+  summarise(
+  media_orcamento = mean(orcamento, na.rm = TRUE),
+  mediana_orcamento = median(orcamento, na.rm = TRUE),
+  variancia_orcamento = var(orcamento, na.rm = TRUE)
+)
+
+imdb %>% 
+  summarize(
+  media_orcamento = mean(orcamento, na.rm = TRUE),
+  media_receita = mean(receita, na.rm = TRUE),
+  media_lucro = mean(receita - orcamento, na.rm = TRUE)
+)
+
+imdb %>% 
+  group_by(cor) %>% 
+  summarise(receita_media = mean(receita, na.rm = TRUE))
