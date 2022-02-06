@@ -119,3 +119,15 @@ imdb %>%
 imdb %>% 
   group_by(cor) %>% 
   summarise(receita_media = mean(receita, na.rm = TRUE))
+
+# Juntando duas bases ----------------------------------------------------------------------------------------------------------------------
+
+tab_lucro_diretor <- imdb %>%
+  group_by(diretor) %>% 
+  summarise(lucro_medio = mean(receita - orcamento, na.rm = TRUE))
+
+tab_lucro_diretor
+
+imdb_com_lucro_medio <- left_join(imdb, tab_lucro_diretor, by = "diretor")
+
+imdb_com_lucro_medio
