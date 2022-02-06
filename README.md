@@ -25,3 +25,15 @@ O dplyr é o pacote mais útil para realizar transformação de dados, aliando s
 - O código fica mais intuitivo de ser escrito e mais simples de ser lido.
 - O pacote dplyr utiliza C e C++ por trás da maioria das funções, o que geralmente torna o código mais rápido.
 - É possível trabalhar com diferentes fontes de dados, como bases relacionais (SQL) e data.table.
+
+## Etapas do script
+
+1. Baixar o pacote;
+2. Acessar dados;
+3. Selecionando colunas;
+4. Ordenando a base;
+5. O código pipe em ação;
+6. Filtrando linhas;
+7. Modificando e criando novas colunas;
+8. Summarisando a base;
+9. Juntando duas bases.
