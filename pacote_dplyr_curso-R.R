@@ -131,3 +131,11 @@ tab_lucro_diretor
 imdb_com_lucro_medio <- left_join(imdb, tab_lucro_diretor, by = "diretor")
 
 imdb_com_lucro_medio
+
+imdb_com_lucro_medio %>% 
+  mutate(
+    lucro = receita - orcamento,
+    lucro_relativo = (lucro - lucro_medio)/lucro_medio,
+    lucro_relativo = scales::percent(lucro_relativo)
+  ) %>% 
+  select(titulo, diretor, lucro, lucro_medio, lucro_relativo)
